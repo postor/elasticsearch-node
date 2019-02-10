@@ -1,0 +1,32 @@
+{
+  "name": "elasticsearch-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/postor/elasticsearch-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/postor/elasticsearch-node/issues"
+  },
+  "homepage": "https://github.com/postor/elasticsearch-node#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "elasticsearch": "^15.4.1",
+    "express": "^4.16.4",
+    "express-async-errors": "^3.1.1",
+    "next": "^7.0.3",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "throttle-debounce": "^2.1.0"
+  }
+}
