@@ -90,10 +90,13 @@ class Index extends Component {
       />
       {(!!suggestions.length) && (<ul style={{ border: '1px solid #000' }}>
         {suggestions.map(x => (<li
-          onClick={() => this.setState({
-            suggestions: [],
-            title: x
-          })}
+          onClick={() => {
+            this.setState({
+              suggestions: [],
+              title: x
+            })
+            this.loadResults(x, tags)
+          }}
           key={x}
           style={{ borderBottom: '1px solid #000' }}
         >{x}</li>))}

@@ -54,12 +54,10 @@ r.delete('/:id', (req, res) => {
 
 })
 
+//搜索
 r.get('/search', async (req, res) => {
   const keyword = (req.query.keyword || '').trim()
   const tags = (req.query.tags || '').trim()
-  console.log({
-    keyword, tags,
-  })
 
   const body = {
     //_source: false
@@ -76,11 +74,15 @@ r.get('/search', async (req, res) => {
       },
     }))
 
-    tags && (body.query.bool.must.push({
-      terms: {
-        tags: tags.split(',').map(x => x.trim()).filter(x => x),
-      },
-    }))
+    tags && (() => {
+      tags.split(',').map(x => x.trim()).filter(x => x).forEach(x => {
+        body.query.bool.must.push({
+          term: {
+            tags: x,
+          },
+        })
+      })
+    })()
   }
   const rtn = await client.search({
     index,
