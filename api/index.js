@@ -5,8 +5,8 @@ const config = require('../config')
 
 const client = new elasticsearch.Client(config)
 
-const index = 'myzhindex2'
-const type = 'mytype2'
+const index = 'myzhindex3'
+const type = 'mytype3'
 
 /**
  * 准备index和mapping
@@ -23,7 +23,10 @@ module.exports.init = async () => {
         properties: {
           title: {
             type: 'text',
-            analyzer: "smartcn"
+            analyzer: "smartcn",
+          },
+          titleac: {
+            type: 'completion',
           },
           tags: {
             type: 'keyword',
@@ -94,13 +97,31 @@ r.get('/tag_suggest/:tag', async (req, res) => {
   const tag = (req.params.tag || '').trim()
   const rtn = await client.search({
     index,
-
     body: {
       suggest: {
         tags: {
           prefix: tag,
           completion: {
             field: 'tagac'
+          }
+        }
+      },
+      _source: false
+    }
+  })
+  res.json(rtn)
+})
+
+r.get('/title_suggest/:title', async (req, res) => {
+  const title = (req.params.title || '').trim()
+  const rtn = await client.search({
+    index,
+    body: {
+      suggest: {
+        titles: {
+          prefix: title,
+          completion: {
+            field: 'titleac'
           }
         }
       },

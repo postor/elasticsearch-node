@@ -19,7 +19,7 @@ export default Comp => class Layout extends Component {
           </Link>
         </nav>
       </header>
-      <Comp {...this.props} />
+      <Comp />
       <footer>footer</footer>
     </div>)
   }

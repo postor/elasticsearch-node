@@ -104,6 +104,7 @@ class Add extends Component {
             title,
             tags,
             tagac: tags,
+            titleac: title,
           })
         }}>添加</button>
       </div>
