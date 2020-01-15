@@ -6,11 +6,11 @@ services:
       - 9200:9200
       - 9300:9300
     environment:
-      - discovery.type: single-node
+      - discovery.type=single-node
 
   web:
     build: ./
     ports:
       - 3000:3000
     environment: 
-      - ES_HOST: elasticsearch:9200
+      - ES_HOST=elasticsearch:9200

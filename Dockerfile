@@ -4,11 +4,11 @@ WORKDIR /app
 
 COPY package.json package.json
 
-RUN yarn
+RUN set -x && yarn
 
 COPY . .
 
-RUN yarn build
+RUN set -x && yarn build
 
 ENV NODE_ENV=production
 
