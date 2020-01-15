@@ -1,12 +1,13 @@
 const { Router } = require('express')
 const { json } = require('body-parser')
 const elasticsearch = require('elasticsearch')
-const config = require('../config')
+
+const config = getConfig()
 
 const client = new elasticsearch.Client(config)
 
 const index = 'myzhindex3'
-const type = 'mytype3'
+// const type = 'mytype3'
 
 /**
  * 准备index和mapping
@@ -18,7 +19,7 @@ module.exports.init = async () => {
     //2. mapping
     await client.indices.putMapping({
       index,
-      type,
+      // type,
       body: {
         properties: {
           title: {
@@ -162,3 +163,13 @@ r.post('/', async (req, res) => {
 })
 
 module.exports.router = r
+
+function getConfig() {
+  if (require('fs').existsSync(require('path').join(__dirname, '..', 'config.js'))) {
+    return require('../config')
+  }
+  return {
+    host: process.env.ES_HOST || 'localhost:9200',
+    log: process.env.ES_LOG || 'trace'
+  }
+}
