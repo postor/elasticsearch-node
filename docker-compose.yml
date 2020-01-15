@@ -12,5 +12,6 @@ services:
     build: ./
     ports:
       - 3000:3000
-    environment: 
+    command: ./wait-for.sh elasticsearch:9200 -- node app.js
+    environment:
       - ES_HOST=elasticsearch:9200
