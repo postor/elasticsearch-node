@@ -21,4 +21,4 @@ services:
     command: node --unhandled-rejections=strict app.js
 
 volumes: 
-  - elasticsearch:
+  elasticsearch:
