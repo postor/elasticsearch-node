@@ -16,3 +16,4 @@ services:
     environment:
       - ES_HOST=elasticsearch:9200
     restart: always
+    command: node --unhandled-rejections=strict app.js
