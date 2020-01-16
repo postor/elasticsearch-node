@@ -1,6 +1,6 @@
 # elasticsearch-node-example
 
-node使用es的一个例子，包含了，自动提示、文本检索和标签搜索 | a es with node example, conatains auto hint, text search and tag search
+node使用es的一个例子，包含了，自动提示、文本检索和标签搜索 | an example for es with node, conatains auto hint, text search and tag search
 
 ## 启动 | start service
 
