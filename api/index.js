@@ -156,7 +156,6 @@ r.use(json())
 r.post('/', async (req, res) => {
   const rtn = await client.index({
     index,
-    type,
     body: req.body,
   })
   res.json(rtn)
