@@ -7,6 +7,7 @@ services:
       - 9300:9300
     environment:
       - discovery.type=single-node
+    restart: always
 
   web:
     build: ./
@@ -15,3 +16,4 @@ services:
     command: ./wait-for.sh elasticsearch:9200 -- node app.js
     environment:
       - ES_HOST=elasticsearch:9200
+    restart: always
