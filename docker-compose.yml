@@ -8,6 +8,8 @@ services:
     environment:
       - discovery.type=single-node
     restart: always
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data:rw
 
   web:
     build: ./
@@ -17,3 +19,6 @@ services:
       - ES_HOST=elasticsearch:9200
     restart: always
     command: node --unhandled-rejections=strict app.js
+
+volumes: 
+  - elasticsearch:
